@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos - NewTour Agência de Viagens</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .page-hero {
+            position: relative; height: 45vh; min-height: 300px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-800) 100%);
+            text-align: center; padding-top: 80px;
+        }
+        .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 10px; }
+        .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+        .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+        .breadcrumb a { color: var(--primary-light); }
+        .filter-bar { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 10px 24px; border: 2px solid var(--gray-lighter); border-radius: 50px;
+            background: var(--white); font-family: 'Poppins', sans-serif; font-weight: 500;
+            font-size: 0.9rem; color: var(--gray); cursor: pointer; transition: var(--transition);
+        }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(8,145,178,0.05); }
+        .loading-state { grid-column: 1/-1; text-align: center; padding: 60px; color: var(--gray); }
+        .loading-state i { font-size: 2rem; color: var(--gray-lighter); margin-bottom: 10px; display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header scrolled" id="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo" style="color: var(--dark);">
+                <i class="fas fa-plane-departure"></i>
+                <span>New<span class="accent">Tour</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="../index.html" class="nav-link">Início</a>
+                <a href="destinos.html" class="nav-link active">Destinos</a>
+                <a href="../index.html#servicos" class="nav-link">Serviços</a>
+                <a href="../index.html#sobre" class="nav-link">Sobre</a>
+                <a href="../index.html#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="../index.html#contato" class="nav-link">Contato</a>
+            </nav>
+            <div class="header-actions">
+                <a href="../index.html#contato" class="btn btn-primary btn-sm">Fale Conosco</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Destinos</span>
+            </div>
+            <h1>Nossos <span class="accent">Destinos</span></h1>
+            <p>Explore todos os destinos incríveis que oferecemos ao redor do mundo</p>
+        </div>
+    </section>
+
+    <!-- DESTINOS -->
+    <section class="section">
+        <div class="container">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="nacional">Nacionais</button>
+                <button class="filter-btn" data-filter="internacional">Internacionais</button>
+            </div>
+            <div class="destinos-grid" id="destinosGrid">
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Carregando destinos...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 NewTour. Todos os direitos reservados.</p>
+                <div class="footer-payments">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511998765432" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // ===== Xano Client =====
+        const CONFIG_KEY = 'newtour_admin_config';
+        function getConfig() {
+            const s = localStorage.getItem(CONFIG_KEY);
+            return s ? JSON.parse(s) : { apiUrl: '', apiKey: '' };
+        }
+        async function xanoFetch(ep) {
+            const c = getConfig();
+            if (!c.apiUrl) return null;
+            try {
+                const r = await fetch(c.apiUrl.replace(/\/+$/,'') + '/' + ep, {
+                    headers: { 'Content-Type':'application/json', ...(c.apiKey ? {'Authorization': c.apiKey} : {}) }
+                });
+                if (!r.ok) return null;
+                return await r.json();
+            } catch { return null; }
+        }
+
+        function formatPrice(v) {
+            if (!v && v !== 0) return '0,00';
+            return Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // ===== Load Destinos =====
+        let allDestinos = [];
+
+        async function loadDestinos() {
+            allDestinos = await xanoFetch('destino') || [];
+            renderDestinos('todos');
+        }
+
+        function renderDestinos(filter) {
+            const grid = document.getElementById('destinosGrid');
+            const search = '';
+
+            let filtered = allDestinos.filter(d => {
+                if (!d.ativa) return false;
+                if (filter !== 'todos' && d.categoria !== filter) return false;
+                return true;
+            }).sort((a, b) => (a.ordem || 0) - (b.ordem || 0));
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="loading-state"><i class="fas fa-map-marked-alt" style="color:var(--gray-lighter);"></i><br>Nenhum destino encontrado.<br>Cadastre no painel administrativo.</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(d => `
+                <div class="destino-card" data-category="${d.categoria || ''}">
+                    <div class="destino-image">
+                        <img src="${d.imagem_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80'}" alt="${d.nome || ''}" loading="lazy">
+                        <div class="destino-overlay"><span class="destino-badge">${d.tag || d.categoria || 'Destino'}</span></div>
+                        <div class="destino-fav"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="destino-info">
+                        <div class="destino-location"><i class="fas fa-map-marker-alt"></i> ${d.localizacao || ''}</div>
+                        <h3>${d.nome || ''}</h3>
+                        <div class="destino-meta">
+                            <span><i class="fas fa-clock"></i> ${d.duracao_dias || '?'} dias</span>
+                            <span><i class="fas fa-star"></i> ${d.avaliacao || '4.5'}</span>
+                        </div>
+                        <div class="destino-footer">
+                            <div class="destino-price"><span>A partir de</span><strong>R$ ${formatPrice(d.preco)}</strong></div>
+                            <a href="../index.html#contato" class="btn btn-primary btn-sm">Ver Pacote</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Favoritos
+            document.querySelectorAll('.destino-fav').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    const icon = btn.querySelector('i');
+                    icon.classList.toggle('far');
+                    icon.classList.toggle('fas');
+                    btn.style.background = icon.classList.contains('fas') ? '#ef4444' : 'rgba(255,255,255,0.9)';
+                    btn.style.color = icon.classList.contains('fas') ? '#fff' : '#64748b';
+                });
+            });
+        }
+
+        // ===== Filters =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderDestinos(btn.dataset.filter);
+            });
+        });
+
+        // ===== Mobile Menu =====
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('menuToggle').classList.toggle('active');
+            document.getElementById('nav').classList.toggle('active');
+        });
+
+        // ===== Back to Top =====
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // ===== Init =====
+        loadDestinos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - NewTour Agência de Viagens</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .page-hero {
+            position: relative;
+            height: 45vh;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-800) 100%);
+            text-align: center;
+            padding-top: 80px;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .page-hero p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .breadcrumb a { color: var(--primary-light); }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header scrolled" id="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo" style="color: var(--dark);">
+                <i class="fas fa-plane-departure"></i>
+                <span>New<span class="accent">Tour</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="../index.html" class="nav-link">Início</a>
+                <a href="destinos.html" class="nav-link">Destinos</a>
+                <a href="../index.html#servicos" class="nav-link">Serviços</a>
+                <a href="../index.html#sobre" class="nav-link">Sobre</a>
+                <a href="../index.html#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="contato.html" class="nav-link active">Contato</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contato.html" class="btn btn-primary btn-sm">Fale Conosco</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Contato</span>
+            </div>
+            <h1>Fale <span class="accent">Conosco</span></h1>
+            <p>Estamos prontos para ajudar você a planejar a viagem dos seus sonhos</p>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section">
+        <div class="container">
+            <div class="contato-grid">
+                <div class="contato-info">
+                    <div class="contato-item">
+                        <div class="contato-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Av. Paulista, 1578 - Bela Vista<br>São Paulo - SP, 01310-200</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 3456-7890<br>(11) 99876-5432 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@newtour.com.br<br>vendas@newtour.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Horário</h4>
+                            <p>Seg - Sex: 9h às 18h<br>Sáb: 9h às 14h</p>
+                        </div>
+                    </div>
+                    <div class="contato-social">
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+
+                    <!-- MAP -->
+                    <div style="margin-top: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197567221469!2d-46.654205585021234!3d-23.56322648468119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c977c7!2sAv.%20Paulista%2C%201578%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1689854321000!5m2!1spt-BR!2sbr"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <form class="contato-form" id="contatoForm">
+                    <h3 style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 700;">Envie sua mensagem</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto">
+                                <option>Pacotes</option>
+                                <option>Dúvidas</option>
+                                <option>Ouvidoria</option>
+                                <option>Parcerias</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="5" placeholder="Conte-nos sobre sua viagem dos sonhos..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 NewTour. Todos os direitos reservados.</p>
+                <div class="footer-payments">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511998765432" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Form
+        const contatoForm = document.getElementById('contatoForm');
+        contatoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contatoForm.querySelector('.btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Mensagem Enviada!';
+            btn.style.background = '#22c55e';
+            btn.style.boxShadow = '0 4px 15px rgba(34, 197, 94, 0.4)';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.boxShadow = '';
+                contatoForm.reset();
+            }, 3000);
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+    </script>
+</body>
+</html>

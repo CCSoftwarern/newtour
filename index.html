@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewTour - Agência de Viagens | Explore o Mundo</title>
+    <meta name="description" content="NewTour - Sua agência de viagens de confiança. Pacotes nacionais e internacionais com as melhores condições.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" id="headerLogo">
+                <i class="fas fa-plane-departure"></i>
+                <span>New<span class="accent">Tour</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link active">Início</a>
+                <a href="#destinos" class="nav-link">Destinos</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#contato" class="btn btn-primary btn-sm">Fale Conosco</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="hero-badge">Aventura com segurança</span>
+            <h1>Descubra o Mundo<br>com a <span class="accent">NewTour</span></h1>
+            <p>Pacotes personalizados, as melhores destinos e atendimento excepcional para tornar sua viagem inesquecível.</p>
+            <div class="hero-buttons">
+                <a href="#destinos" class="btn btn-primary btn-lg">
+                    <i class="fas fa-compass"></i> Explorar Destinos
+                </a>
+                <a href="#sobre" class="btn btn-outline btn-lg">
+                    <i class="fas fa-play-circle"></i> Sobre Nós
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong id="statViajantes">15k+</strong>
+                    <span>Viajantes felizes</span>
+                </div>
+                <div class="stat">
+                    <strong id="statDestinosHero">200+</strong>
+                    <span>Destinos</span>
+                </div>
+                <div class="stat">
+                    <strong>10+</strong>
+                    <span>Anos de experiência</span>
+                </div>
+                <div class="stat">
+                    <strong>98%</strong>
+                    <span>Satisfação</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#destinos"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <!-- BUSCA RÁPIDA -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <div class="search-field">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <label>Para onde?</label>
+                        <input type="text" placeholder="Digite seu destino" id="searchDestino">
+                    </div>
+                </div>
+                <div class="search-field">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <label>Data de ida</label>
+                        <input type="date" id="searchDataIda">
+                    </div>
+                </div>
+                <div class="search-field">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <label>Data de volta</label>
+                        <input type="date" id="searchDataVolta">
+                    </div>
+                </div>
+                <div class="search-field">
+                    <i class="fas fa-user-friends"></i>
+                    <div>
+                        <label>Viajantes</label>
+                        <select id="searchViajantes">
+                            <option>1 pessoa</option>
+                            <option>2 pessoas</option>
+                            <option>3 pessoas</option>
+                            <option>4+ pessoas</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-lg search-btn">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINOS POPULARES -->
+    <section class="section destinos" id="destinos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Destinos Populares</span>
+                <h2>Conheça Nossos <span class="accent">Melhores Destinos</span></h2>
+                <p>Selecionamos os destinos mais procurados e exclusivos para você viver experiências únicas ao redor do mundo.</p>
+            </div>
+            <div class="destinos-grid" id="destinosGrid">
+                <!-- Preenchido dinamicamente via API Xano -->
+            </div>
+            <div class="section-cta">
+                <a href="pages/destinos.html" class="btn btn-outline btn-lg">
+                    Ver Todos os Destinos <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section servicos" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nossos Serviços</span>
+                <h2>Oferecemos o <span class="accent">Melhor Para Você</span></h2>
+                <p>Desde a planejamento até o retorno, cuidamos de cada detalhe da sua viagem.</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Pacotes Aéreos</h3>
+                    <p>Voo com as melhores companhias aéreas, com opções diretas e escalas econômicas.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Hospedagens</h3>
+                    <p>Hotéis, resorts e pousadas selecionados com padrão de qualidade comprovado.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Traslados</h3>
+                    <p>Transporte do aeroporto ao hotel e vice-versa, com motoristas profissionais.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguro Viagem</h3>
+                    <p>Proteção completa para sua viagem com cobertura internacional de emergência.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>City Tours</h3>
+                    <p>Passeios guiados pelos pontos turísticos mais importantes de cada destino.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte 24h</h3>
+                    <p>Assistência completa durante toda a sua viagem, a qualquer hora do dia.</p>
+                    <a href="#" class="servico-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOÇÕES -->
+    <section class="section promocoes" id="promocoes">
+        <div class="container">
+            <div class="promo-banner" id="promoBanner">
+                <div class="promo-content">
+                    <span class="promo-badge" id="promoBadge">Oferta Especial</span>
+                    <h2 id="promoTitle">Carregando promoções...</h2>
+                    <p id="promoDesc"></p>
+                    <div class="promo-countdown" id="countdown" style="display:none;">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">00</span>
+                            <span class="countdown-label">Dias</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label">Horas</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label">Min</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label">Seg</span>
+                        </div>
+                    </div>
+                    <a href="#contato" class="btn btn-primary btn-lg" id="promoBtn">
+                        <i class="fas fa-tag"></i> Aproveitar Agora
+                    </a>
+                </div>
+                <div class="promo-image" id="promoImage">
+                    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80" alt="Promoção">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section sobre" id="sobre">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-images">
+                    <div class="sobre-img-main">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80" alt="Equipe NewTour">
+                    </div>
+                    <div class="sobre-img-accent">
+                        <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80" alt="Viagem">
+                    </div>
+                    <div class="sobre-experience">
+                        <span class="exp-number">10+</span>
+                        <span class="exp-text">Anos de<br>Experiência</span>
+                    </div>
+                </div>
+                <div class="sobre-content">
+                    <span class="section-tag">Sobre Nós</span>
+                    <h2>Sua Próxima Aventura <span class="accent">Começa Aqui</span></h2>
+                    <p id="sobreTexto">A NewTour é uma agência de viagens comprometida em transformar seus sonhos de viagem em realidade. Com mais de 10 anos de experiência, atendemos mais de 15 mil viajantes felizes.</p>
+                    <div class="sobre-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Viagens Personalizadas</h4>
+                                <p>Cada roteiro é montado especialmente para você.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Parceiros Confiáveis</h4>
+                                <p>Trabalhamos com as melhores empresas do mercado.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4>Preços Competitivos</h4>
+                                <p>As melhores condições de pagamento e preço.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contato" class="btn btn-primary btn-lg">Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="section depoimentos" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2>O Que Nossos Clientes <span class="accent">Dizem</span></h2>
+                <p>Histórias reais de quem já viveu experiências incríveis com a NewTour.</p>
+            </div>
+            <div class="depoimentos-slider" id="depoimentosSlider">
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"A NewTour superou todas as minhas expectativas. O roteiro perfeito para Paris, com hotéis incríveis e passeios memoráveis. Recomendo de olhos fechados!"</p>
+                    <div class="depoimento-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria">
+                        <div>
+                            <strong>Maria Fernanda</strong>
+                            <span>Paris, França</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Fiz a lua de mel nas Maldivas com a NewTour e foi simplesmente perfeito. Tudo foi cuidado ao máximo detalhe. Vivemos um sonho!"</p>
+                    <div class="depoimento-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rafael">
+                        <div>
+                            <strong>Rafael Costa</strong>
+                            <span>Maldivas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Viajei com a família para Fernando de Noronha e cada momento foi especial. A equipe da NewTour é atenciosa e profissional. Nota 10!"</p>
+                    <div class="depoimento-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana">
+                        <div>
+                            <strong>Ana Paula Santos</strong>
+                            <span>Fernando de Noronha</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section newsletter">
+        <div class="container">
+            <div class="newsletter-box">
+                <div class="newsletter-content">
+                    <i class="fas fa-paper-plane newsletter-icon"></i>
+                    <h2>Receba Ofertas <span class="accent">Exclusivas</span></h2>
+                    <p>Cadastre-se e receba em primeira mão as melhores promoções e novidades de viagens.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Digite seu melhor e-mail" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Cadastrar
+                        </button>
+                    </div>
+                    <small>Não compartilhamos seus dados. Cancele quando quiser.</small>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section contato" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contato</span>
+                <h2>Entre em <span class="accent">Contato</span></h2>
+                <p>Estamos prontos para ajudar você a planejar a viagem dos seus sonhos.</p>
+            </div>
+            <div class="contato-grid">
+                <div class="contato-info">
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p id="siteEndereco">Av. Paulista, 1578 - Bela Vista<br>São Paulo - SP, 01310-200</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p id="siteTelefones">(11) 3456-7890<br>(11) 99876-5432 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p id="siteEmails">contato@newtour.com.br<br>vendas@newtour.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horário</h4>
+                            <p id="siteHorario">Seg - Sex: 9h às 18h<br>Sáb: 9h às 14h</p>
+                        </div>
+                    </div>
+                    <div class="contato-social" id="siteContatoSocial">
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <form class="contato-form" id="contatoForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto">
+                                <option>Pacotes</option>
+                                <option>Dúvidas</option>
+                                <option>Ouvidoria</option>
+                                <option>Parcerias</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="5" placeholder="Conte-nos sobre sua viagem dos sonhos..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="index.html" class="logo footer-logo" id="footerLogo">
+                        <i class="fas fa-plane-departure"></i>
+                        <span>New<span class="accent">Tour</span></span>
+                    </a>
+                    <p id="footerDescricao">Transformando sonhos em viagens inesquecíveis desde 2015. Sua aventura começa aqui.</p>
+                    <div class="footer-social" id="footerSocial">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Destinos</h4>
+                    <ul id="footerDestinos">
+                        <li><a href="#destinos">Carregando...</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#">Blog de Viagens</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#contato">Central de Ajuda</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Reembolso</a></li>
+                        <li><a href="#">Seguro Viagem</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footerCopyright">&copy; 2026 NewTour. Todos os direitos reservados. CNPJ: 12.345.678/0001-90</p>
+                <div class="footer-payments">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-pix"></i>
+                    <i class="fas fa-barcode"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5511998765432" class="whatsapp-float" id="whatsappFloat" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
